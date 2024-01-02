@@ -41,6 +41,8 @@ int main(int argc, char *argv[])
 			pop(&stack, 0);
 		else if (strcmp(opcode, "pint") == 0)
 			pint(&stack, 0);
+		else if (strcmp(opcode, "swap") == 0)
+			swap(&stack, 0);
 	}
 	fclose(file);
 	free(line);
