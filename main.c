@@ -22,28 +22,24 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Usage: %s <file>\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
-
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
 	while ((read = getline(&line, &len, file)) != -1)
 	{
 		char *opcode = strtok(line, " \n\t");
-
 		if (opcode == NULL)
 			continue;
-
 		if (strcmp(opcode, "push") == 0)
 			push(&stack, 0);
-
 		else if (strcmp(opcode, "pall") == 0)
 			pall(&stack, 0);
+		else if (strcmp(opcode, "pop") == 0)
+			pop(&stack, 0);
 	}
-
 	fclose(file);
 	free(line);
 	return (EXIT_SUCCESS);
