@@ -39,6 +39,8 @@ int main(int argc, char *argv[])
 			pall(&stack, 0);
 		else if (strcmp(opcode, "pop") == 0)
 			pop(&stack, 0);
+		else if (strcmp(opcode, "pint") == 0)
+			pint(&stack, 0);
 	}
 	fclose(file);
 	free(line);
