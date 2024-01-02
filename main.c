@@ -42,6 +42,9 @@ int main(int argc, char *argv[])
 
 		else if (strcmp(opcode, "pall") == 0)
 			pall(&stack, 0);
+		
+		else if (strcmp(opcode, "pint") == 0)
+			pint(&stack, 0);
 	}
 
 	fclose(file);
