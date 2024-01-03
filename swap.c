@@ -16,7 +16,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	if (node == NULL || node->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-		EXIT_FAILURE;
+		exit(EXIT_FAILURE);
 	}
 
 	temp = node->n;
