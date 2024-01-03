@@ -1,7 +1,5 @@
 #include "monty.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
 
 /**
  * main - reading opcodes from a file
@@ -12,10 +10,11 @@
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *line = NULL;
+	char *line = NULL, *opcode;
 	size_t len = 0;
 	ssize_t read;
 	stack_t *stack = NULL;
+	unsigned int line_number = 0;
 
 	if (argc != 2)
 	{
@@ -28,25 +27,18 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
+
 	while ((read = getline(&line, &len, file)) != -1)
 	{
-		char *opcode = strtok(line, " \n\t");
-		if (opcode == NULL)
-			continue;
-		if (strcmp(opcode, "push") == 0)
-			push(&stack, 0);
-		else if (strcmp(opcode, "pall") == 0)
-			pall(&stack, 0);
-		else if (strcmp(opcode, "pop") == 0)
-			pop(&stack, 0);
-		else if (strcmp(opcode, "pint") == 0)
-			pint(&stack, 0);
-		else if (strcmp(opcode, "swap") == 0)
-			swap(&stack, 0);
-		else if (strcmp(opcode, "add") == 0)
-			add(&stack, 0);
+		opcode = strtok(line, " \n\t");
+
+		if (opcode != NULL)
+		{
+			opcodes(&stack, line_number, opcode);
+		}
 	}
 	fclose(file);
 	free(line);
+	free(stack);
 	return (EXIT_SUCCESS);
 }
