@@ -30,6 +30,7 @@ int main(int argc, char *argv[])
 
 	while ((read = getline(&line, &len, file)) != -1)
 	{
+		line_number++;
 		opcode = strtok(line, " \n\t");
 
 		if (opcode != NULL)
