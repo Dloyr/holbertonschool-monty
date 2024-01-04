@@ -1,5 +1,5 @@
 #include "monty.h"
-/*
+/**
 * nop - does nothing
 * @stack: pointer to the stack
 * @line_number: line number
