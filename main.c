@@ -31,9 +31,9 @@ int main(int argc, char *argv[])
 	while ((read = getline(&line, &len, file)) != -1)
 	{
 		line_number++;
-		opcode = strtok(line, " \n\t");
+		opcode = strtok(line, " \n\t\r");
 
-		if (opcode != NULL)
+		if (opcode != NULL && opcode[0] != '#')
 		{
 			opcodes(&stack, line_number, opcode);
 		}
